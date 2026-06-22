@@ -11,3 +11,4 @@ An if statement looks for the change in the variable inside the task, then it ca
 A variable `tapOnTime` keeps track on the on time with `millis()`
 NOTE: 5s rule only applicable if the `tapOnTime` is less than 1min, 1min is maximum, then 10s break, then again handling
 
+LED GPIO: 4, MOSFET/solenoid GPIO: 19
