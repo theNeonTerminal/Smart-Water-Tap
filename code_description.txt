@@ -1,0 +1,13 @@
+Project: A Smart Water Tap
+Working: A tap which is equipped with an ToF (VL53L0X). When the distance measured by the ToF exceeds given a threshold value, it turns a solenoid valve, which allows the flow of water, and when the hand is moved away, then the solenoid turns off following a given set of rules
+
+When the ToF reading below 11cm , then the esp32 turns on a GPIO (solenoid) keeps it on as long as the reading/hand is there, then turn off the GPIO after 5s after the hand is removed. The Tap will also have an indicator LED, which is stay on when the tap is on.
+There is max time limit of 1min, after 1min, if the ToF is consistently below 11cm, then it led start flashing indicating the water is about to turn off. Then the water turns off at the 1min mark, then the reading ignored until the reading again moves more than the threshold, then wait 10s, then it again start using the value for turning the tap ON or OFF.
+
+CODE:
+create a FreeRTOS task for taking the reading, a FreeRTOS Task for handling wireless communication (not implemented now, but keep the task). The reading will be taken every 1s, if true, then it flag a boolean variable
+VARIABLES NEEDED (from my side, you can add your own): threshold distance, break time(10s), tapOnTime, excess time (5s) along with many flaging variables needed for effective feedback conditioning.
+An if statement looks for the change in the variable inside the task, then it calls the `openTap()` function, this function listens for many things - primarily it handles turning the GPIO on or off and handling timers, including the 1min check, LED, and 5s on after hand removed
+A variable `tapOnTime` keeps track on the on time with `millis()`
+NOTE: 5s rule only applicable if the `tapOnTime` is less than 1min, 1min is maximum, then 10s break, then again handling
+
