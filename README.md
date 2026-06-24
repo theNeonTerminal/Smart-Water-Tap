@@ -11,15 +11,14 @@ Currently in a single-unit testing phase (6-month trial). The local sensing/valv
 | PART NAME | PART NUMBER | Quantity |
 | --------- | ----------- | -------- |
 | Microcontroller | ESP32  2 |
-| MOSFET | IRLFZ44 | 2 |
+| MOSFET | IRLZ44 | 2 |
 | ToF   | VL53L0X | 1 |
 | Valve | ------ | 1 |
 | Voltage Booster | MT3608 | 1 |
-| PCB/Perfboard | zero/Professional | 3 |
 | PSU 12v | 12V 2A | 1 |
 | 5v Step Down | LM7805 | 4 |
 | 3.3v Step Down | AMS1117 3.3  | 2 |
-| Diode | 1N4007 | 10 |
-| Capacitor | vlaues given below| 4 |
+| Diode | 1N4007 | 1|
+| Capacitor | values given below| 4 |
 
 Capacitors: 10μF, 0.1μF (x2), 0.22μF
